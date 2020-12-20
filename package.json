@@ -1,7 +1,7 @@
 {
-  "name": "@sunzhongmou/mf-math",
+  "name": "@sunzhongmou/mf-points",
   "version": "0.1.0",
-  "description": "Math component for micro frontend ",
+  "description": "Points component for micro frontend ",
   "main": "src/index.js",
   "scripts": {
     "format": "prettier --write src",
@@ -22,11 +22,10 @@
   "author": "me@sunwei.xyz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sunzhongmou/mf-math/issues"
+    "url": "https://github.com/sunzhongmou/mf-points/issues"
   },
-  "homepage": "https://math.sunzhongmou.com",
+  "homepage": "https://point.sunzhongmou.com",
   "dependencies": {
-    "@sunzhongmou/math": "^0.2.1",
     "history": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

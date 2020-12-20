@@ -1518,25 +1518,6 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sunzhongmou/ddd@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@sunzhongmou/ddd/-/ddd-0.0.1.tgz#e3b0baa5849fa7ddcba8ccce195cd3b3d22abd39"
-  integrity sha512-5Id0JYrEo1huh0wGr3Sbyo8zTr9+EnAZLUSdZ1EZm0EviPmHecadurobbVrAxT29WUx0NGFyMC6VvYYUAclZow==
-
-"@sunzhongmou/design-pattern@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@sunzhongmou/design-pattern/-/design-pattern-0.0.1.tgz#5a1492675a117bc61e1f49f104407c4536db88c2"
-  integrity sha512-7w1Z7CeYXtnTdn1vUyrReJRQ9VLkKN6o+TJbqHI5fnfX78i/T+cacrFA16KPQ0PwzUqcvI2sJs67UqModTHzqQ==
-
-"@sunzhongmou/math@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@sunzhongmou/math/-/math-0.2.1.tgz#e481c99dcadd6607e575e64e78fa59e8b089831d"
-  integrity sha512-CDTw0qXr3I0qIUc9KGFDCpZJLSDKsqgyWKduKZ9ZrlSSRtn1nEUlK/+pIVmYkoMSockcJs9iD0JgQlvSvufNqg==
-  dependencies:
-    "@sunzhongmou/ddd" "0.0.1"
-    "@sunzhongmou/design-pattern" "0.0.1"
-    uuid "^8.3.0"
-
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.4.2.tgz#e6786b6af5799f82f7ab3a82e53f6182d2b91a58"
