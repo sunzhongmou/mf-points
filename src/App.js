@@ -25,6 +25,7 @@ class App extends React.Component {
     this.state = {
       point: "100",
       loading: true,
+      error: false
     };
   }
 
@@ -49,10 +50,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { point, loading } = this.state;
+    const { point, loading, error } = this.state;
 
     if (loading) {
       return <Loading />;
+    }
+
+    if (error) {
+      return (
+        <PointSlate>
+          Sorry, but the Points query service is unavailable right now
+        </PointSlate>
+      );
     }
 
     return (
