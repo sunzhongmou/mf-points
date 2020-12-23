@@ -1,0 +1,30 @@
+.pt-btn {
+    padding-top: 26px!important;
+}
+
+.form-group .input-point {
+    width: 55px;
+}
+
+.form-group .input-desc {
+    width: 550px;
+}
+
+.record-row {
+    display: inline-block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.timeline-group {
+    text-align: left;
+    margin: 20px 160px;
+}
+
+.blankslate img {
+    margin: 0 0 -3px 14px;
+    width: 15px;
+    height: 15px;
+}

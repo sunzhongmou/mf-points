@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import App from '../App';
 
 it('given app when component did mount then component rendered', async () => {
-  fetch.mockRejectOnce(new Error('Nope!'));
+  fetch.mockReject(new Error('Nope!'));
   const app = mount(<App />);
 
   await new Promise(setTimeout);
