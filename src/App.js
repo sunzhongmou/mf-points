@@ -13,7 +13,7 @@ const PointSlate = styled.div.attrs({
 `;
 
 const Point = styled.h2.attrs({
-  className: 'mb-1',
+  className: 'mb-1 rainbow',
 })`
   font-size: 300px;
 `;
