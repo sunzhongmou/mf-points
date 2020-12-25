@@ -1,7 +1,7 @@
 import React from 'react';
 import {Router} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
-import styled from 'styled-components';
+import styled,  { keyframes } from 'styled-components';
 import Loading from './components/Loading';
 import './App.css';
 
@@ -12,10 +12,73 @@ const PointSlate = styled.div.attrs({
   margin: 0 auto;
 `;
 
+const rainbow = keyframes`
+ 0%{color: orange;}
+    10%{color: purple;}
+    20%{color: red;}
+    30%{color: CadetBlue;}
+    40%{color: yellow;}
+    50%{color: coral;}
+    60%{color: green;}
+    70%{color: cyan;}
+    80%{color: DeepPink;}
+    90%{color: DodgerBlue;}
+    100%{color: orange;}
+`;
+
 const Point = styled.h2.attrs({
   className: 'mb-1 rainbow',
 })`
   font-size: 300px;
+  /* Font options */
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px #000000;
+
+  /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 5s infinite;
+
+  /* Internet Explorer */
+  -ms-animation: rainbow 5s infinite;
+
+  /* Standar Syntax */
+  animation: ${rainbow} 5s infinite;
+`;
+
+const PtButton = styled.dd.attrs({
+})`
+  padding-top: 26px!important;
+`;
+
+const InputPoint = styled.input.attrs({
+})`
+  width: 55px!important;
+`;
+
+const InputDesc = styled.input.attrs({
+})`
+  width: 550px!important;
+`;
+
+const RecordRow = styled.div.attrs({
+})`
+  display: inline-block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+`;
+
+const TimelineGroup = styled.div.attrs({
+})`
+  text-align: left;
+  margin: 20px 160px;
+`;
+
+const ImgLoading = styled.img.attrs({
+})`
+  margin: 0 0 -3px 14px;
+  width: 15px!important;
+  height: 15px!important;
 `;
 
 const defaultHistory = createBrowserHistory();
@@ -198,7 +261,7 @@ class App extends React.Component {
           <Point>{point}</Point>
 
           <form onSubmit={this.handleSubmit}>
-            <div className="form-group required mt-1 record-row">
+            <RecordRow className="form-group required mt-1">
               <dt className="form-group-header"><label>科目</label></dt>
               <dd className="form-group-body">
                 <select className="form-select" aria-label="Important decision"
@@ -211,36 +274,36 @@ class App extends React.Component {
                   <option value="奖励">奖励</option>
                 </select>
               </dd>
-            </div>
+            </RecordRow>
             <span className="pt-4 mx-2 f2 mt-1">/</span>
-            <div className={'form-group mt-1 required record-row' + (submitted && !record.point ? ' errored' : '')}>
+            <RecordRow className={'form-group mt-1 required' + (submitted && !record.point ? ' errored' : '')}>
               <dt className="input-label"><label>分数</label></dt>
               <dd>
-                <input className="form-control js-repo-name input-point" id="point-input" type="number"
+                <InputPoint className="form-control js-repo-name" id="point-input" type="number"
                        name="point" value={record.point} onChange={this.handleChange}
                        aria-describedby="point-input-validation"/>
                 <p className="note error" id="point-input-validation">不能为空</p>
               </dd>
-            </div>
+            </RecordRow>
             <span className="pt-4 mx-2 f2 mt-1 ">/</span>
-            <div className={'form-group mt-1 required record-row'  + (submitted && !record.description ? ' errored' : '')}>
+            <RecordRow className={'form-group mt-1 required'  + (submitted && !record.description ? ' errored' : '')}>
               <dt className="input-label"><label>描述</label></dt>
               <dd>
-                <input className="form-control js-repo-name input-desc" id="desc-input" type="text"
+                <InputDesc className="form-control js-repo-name" id="desc-input" type="text"
                        name="description" value={record.description} onChange={this.handleChange}
                        aria-describedby="desc-input-validation"/>
                 <p className="note error" id="desc-input-validation">不能为空</p>
               </dd>
-            </div>
-            <div className="form-group mt-1 record-row">
-              <dd className="pt-btn">
+            </RecordRow>
+            <RecordRow className="form-group mt-1">
+              <PtButton>
                 <button className="btn btn-primary" aria-disabled={!validationPassed}>提交</button>
-                {serving && <img id="submit-status" alt='' src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>}
-              </dd>
-            </div>
+                {serving && <ImgLoading id="submit-status" alt='' src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>}
+              </PtButton>
+            </RecordRow>
           </form>
 
-          <div className="timeline-group">
+          <TimelineGroup>
             {records.map((record) => (
               <div className="TimelineItem" key={record.id}>
                   {renderRecordIcon(record.point)}
@@ -250,7 +313,7 @@ class App extends React.Component {
               </div>
             ))}
             
-          </div>
+          </TimelineGroup>
 
         </PointSlate>
       </Router>
